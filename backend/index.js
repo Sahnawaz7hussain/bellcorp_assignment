@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Server running..");
+  res.send("Server running....");
 });
 app.listen(port, async () => {
   try {

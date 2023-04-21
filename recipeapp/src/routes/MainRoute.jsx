@@ -5,6 +5,7 @@ import Recipe from "../pages/Recipe";
 import Login from "../pages/Login";
 import PrivateRoute from "./PrivateRoute";
 import AddItem from "../pages/AddItem";
+import CreateRecipe from "../pages/CreateRecipe";
 
 const MainRoute = () => {
   return (
@@ -30,6 +31,14 @@ const MainRoute = () => {
         element={
           <PrivateRoute>
             <AddItem />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/createrecipe"
+        element={
+          <PrivateRoute>
+            <CreateRecipe />
           </PrivateRoute>
         }
       />

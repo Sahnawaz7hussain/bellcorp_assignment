@@ -4,24 +4,22 @@ import {
   Flex,
   Image,
   Spacer,
-  Stack,
   Text,
-  useColorModeValue,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
   MenuGroup,
-  MenuOptionGroup,
   MenuDivider,
   Button,
+  useColorMode,
 } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const isAuth = false;
+  const { toggleColorMode, colorMode } = useColorMode();
+  const isAuth = true;
   return (
     <>
       <Flex
@@ -36,13 +34,15 @@ const Navbar = () => {
         bg={"#4e4bf7"}
         zIndex={2}
       >
-        <Box>Recipe</Box>
+        <Box fontSize={20} fontWeight={"bold"}>
+          RecipeApp
+        </Box>
         <Spacer />
         <Box display={"flex"} alignItems={"center"} gap={[4, 8, 12]}>
-          <Text>
+          <Text color={"white"} fontSize={"18px"}>
             <Link to="/">Items</Link>
           </Text>
-          <Text>
+          <Text color={"white"} fontSize={"18px"}>
             <Link to="/recipe">Recipe</Link>
           </Text>
 
@@ -66,6 +66,9 @@ const Navbar = () => {
                   <MenuGroup title="Help">
                     <MenuItem>Docs</MenuItem>
                     <MenuItem>FAQ</MenuItem>
+                    <MenuItem onClick={toggleColorMode}>
+                      {colorMode === "dark" ? "Light" : "Dark"} Theme
+                    </MenuItem>
                   </MenuGroup>
                   <MenuDivider />
                   <MenuItem color={"red"}>Logout</MenuItem>
@@ -73,7 +76,7 @@ const Navbar = () => {
               </Menu>
             </>
           ) : (
-            <Text>
+            <Text color={"white"} fontSize={"18px"}>
               <Link to="/login">Login</Link>
             </Text>
           )}

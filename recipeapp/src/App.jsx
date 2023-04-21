@@ -1,11 +1,13 @@
+import { Box } from "@chakra-ui/react";
 import "./App.css";
+import Navbar from "./components/Navbar";
+import MainRoute from "./routes/MainRoute";
 function App() {
   return (
-    <div className="App">
-      <h1>Recipe app</h1>
-      <div>Hello world</div>
-      <button>Hello world</button>
-    </div>
+    <Box className="App">
+      <Navbar />
+      <MainRoute />
+    </Box>
   );
 }
 

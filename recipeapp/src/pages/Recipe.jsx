@@ -47,7 +47,7 @@ const Recipe = () => {
         getRecipes();
       });
   }
-  //console.log("data;", data);
+  // console.log("data;", data);
   return (
     <Box w={"100%"} px={["2%", "2%", "5%"]} mt={"30px"}>
       {isLoading && <Box as="span">Loading...</Box>}
@@ -56,6 +56,7 @@ const Recipe = () => {
           Something went wrong...
         </Box>
       )}
+
       <Flex>
         <Heading size={"md"}>All your Recipes</Heading>
         <Spacer />

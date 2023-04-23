@@ -39,7 +39,7 @@ const Navbar = () => {
         zIndex={2}
       >
         <Link to="/">
-          <Box fontSize={20} fontWeight={"bold"}>
+          <Box fontSize={20} fontWeight={"bold"} color={"#fff"}>
             RecipeApp
           </Box>
         </Link>

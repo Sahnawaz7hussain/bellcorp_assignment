@@ -6,6 +6,7 @@ import {
   Container,
   FormControl,
   FormLabel,
+  Heading,
   Input,
   Stack,
   Text,
@@ -76,6 +77,9 @@ const CreateRecipe = () => {
       boxShadow={"lg"}
       p={8}
     >
+      <Heading my={10} textAlign={"center"} size={"xl"}>
+        Create new Recipe
+      </Heading>
       <FormControl>
         <FormLabel>Recipe Name</FormLabel>
         <Input

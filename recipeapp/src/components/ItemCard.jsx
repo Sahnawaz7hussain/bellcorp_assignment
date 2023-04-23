@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 
-const ItemCard = ({ item }) => {
+const ItemCard = ({ item, deleteItem, updateItem }) => {
   const initialEditData = {
     name: item.name,
     weight: item.weight,
@@ -28,7 +28,16 @@ const ItemCard = ({ item }) => {
   };
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [editData, setEditData] = useState(initialEditData);
+  const [editId, setEditId] = useState("");
 
+  function openModal(id) {
+    setEditId(id);
+    onOpen();
+  }
+
+  const handleOnClick = () => {
+    updateItem(editId, editData);
+  };
   const handleOnChange = (e) => {
     let { name, value } = e.target;
     console.log("hello world:", value);
@@ -55,7 +64,8 @@ const ItemCard = ({ item }) => {
       <Flex gap={"15px"}>
         <>
           <IconButton
-            onClick={onOpen}
+            onClick={() => openModal(item._id)}
+            //onClick={onOpen}
             title="Update Item"
             colorScheme="green"
             icon={<EditIcon />}
@@ -93,10 +103,15 @@ const ItemCard = ({ item }) => {
               </ModalBody>
 
               <ModalFooter>
-                <Button colorScheme="red" mr={3} onClick={onClose}>
+                <Button
+                  variant="ghost"
+                  colorScheme="red"
+                  mr={3}
+                  onClick={onClose}
+                >
                   Close
                 </Button>
-                <Button variant="ghost" colorScheme="green">
+                <Button onClick={handleOnClick} colorScheme="green">
                   Update
                 </Button>
               </ModalFooter>
@@ -104,6 +119,7 @@ const ItemCard = ({ item }) => {
           </Modal>
         </>
         <IconButton
+          onClick={() => deleteItem(`${item._id}`)}
           title="Delete Item"
           colorScheme="red"
           icon={<DeleteIcon />}

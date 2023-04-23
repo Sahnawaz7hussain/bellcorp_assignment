@@ -16,10 +16,14 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { userLogoutActionFn } from "../redux/authReducer/authActions";
 const Navbar = () => {
   const { toggleColorMode, colorMode } = useColorMode();
-  const isAuth = true;
+  const { isAuth } = useSelector((state) => state.authReducer);
+  const dispatch = useDispatch();
+
+  //const isAuth = true;
   return (
     <>
       <Flex
@@ -34,9 +38,11 @@ const Navbar = () => {
         bg={"#4e4bf7"}
         zIndex={2}
       >
-        <Box fontSize={20} fontWeight={"bold"}>
-          RecipeApp
-        </Box>
+        <Link to="/">
+          <Box fontSize={20} fontWeight={"bold"}>
+            RecipeApp
+          </Box>
+        </Link>
         <Spacer />
         <Box display={"flex"} alignItems={"center"} gap={[4, 8, 12]}>
           <Text color={"white"} fontSize={"18px"}>
@@ -71,7 +77,12 @@ const Navbar = () => {
                     </MenuItem>
                   </MenuGroup>
                   <MenuDivider />
-                  <MenuItem color={"red"}>Logout</MenuItem>
+                  <MenuItem
+                    onClick={() => dispatch(userLogoutActionFn())}
+                    color={"red"}
+                  >
+                    Logout
+                  </MenuItem>
                 </MenuList>
               </Menu>
             </>
